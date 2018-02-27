@@ -6,7 +6,7 @@ module BetterDig
 
   def digg(key, *rest)
     value = self.is_a?(Array) ? self[key.to_i] : self[key]
-    value = self[key.send(INDIFFERENT_FIND[key.class])] unless value
+    value = self[key.send(INDIFFERENT_FIND[key.class])] if value.nil? && self.is_a?(Hash)
     return value             if value.nil? || rest.empty?
     return value.digg(*rest) if value.respond_to?(:digg)
     nil
