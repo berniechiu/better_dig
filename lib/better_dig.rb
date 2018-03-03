@@ -23,7 +23,7 @@ module BetterDig
   end
 
   def find_indifferent_value_by(key)
-    self[key] || self[key.send(INDIFFERENT_FIND[key.class])
+    self[key] || self[key.send(INDIFFERENT_FIND[key.class])]
   end
 end
 

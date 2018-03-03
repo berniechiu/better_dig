@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    better_dig (0.1.0)
+    better_dig (0.5.1)
 
 GEM
   remote: https://rubygems.org/
