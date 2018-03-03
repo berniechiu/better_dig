@@ -6,10 +6,7 @@ module BetterDig
 
   def digg(key, *rest)
     value = self[key.to_i] if match_array?(key)
-    if self.is_a?(Hash)
-      value = self[key]
-      value = self[key.send(INDIFFERENT_FIND[key.class])] if value.nil?
-    end
+    value = find_indifferent_value_by(key) if self.is_a?(Hash)
     return value             if value.nil? || rest.empty?
     return value.digg(*rest) if value.respond_to?(:digg)
     nil
@@ -23,6 +20,10 @@ module BetterDig
       return true if key.is_a?(Numeric)
     end
     false
+  end
+
+  def find_indifferent_value_by(key)
+    self[key] || self[key.send(INDIFFERENT_FIND[key.class])
   end
 end
 
