@@ -32,23 +32,35 @@ Or install it yourself as:
 
 ## Usage
 
+Basic Examples
+
 ```ruby
 hash = { hello: 'world', nested: { hello: 'world' }, nested_array: ['hello', 'world'] }
 
-hash.digg(:hello)  # => 'world'
-hash.digg('hello') # => 'world'
-hash.digg('nested', 'hello') # => 'world'
-hash.digg('nested_array', 0) # => 'hello'
+hash.digg(:hello)                # => 'world'
+hash.digg('hello')               # => 'world'
+hash.digg('nested', 'hello')     # => 'world'
+hash.digg('nested_array', 0)     # => 'hello'
+hash.digg('nested_array', '0')   # => 'hello'
+hash.digg(:hello, 0, :not_found) # => nil
 
 # Since `nil` will be returned for not found value instead of exception,
-# we can use conditional block now without breaking the application
+# we can use conditional block without breaking the application
 
 if hash.digg(:nested, :hello, :world) # => nil
-  # DO SOMETHING
+  # DO SOMETHING WHEN FOUND
 else
-  # DO SOMETHING
+  # DO SOMETHING WHEN NOT FOUND
 end
 ```
+
+Or probably in the Rails views
+
+```erb
+<%= object.hash_data.digg(:snapshot, :price) %>
+
+```
+
 
 ## Contributing
 
