@@ -45,7 +45,7 @@ hash.digg('nested_array', 0)     # => 'hello'
 hash.digg('nested_array', '0')   # => 'hello'
 hash.digg(:hello, 0, :not_found) # => nil
 
-# Since `nil` will be returned for not found value instead of exception,
+# Since `nil` will be returned for not found value instead of TypeError if we are digging too far
 # we can use conditional block without breaking the application
 
 if hash.digg(:nested, :hello, :world) # => nil
