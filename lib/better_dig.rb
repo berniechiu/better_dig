@@ -12,6 +12,10 @@ module BetterDig
     nil
   end
 
+  def fetch_path(path, default: nil, delimeter: '/')
+    digg(*path.split(delimeter)) || default
+  end
+
   private
 
   def match_array?(key)

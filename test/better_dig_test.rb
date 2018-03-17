@@ -32,4 +32,16 @@ class BetterDigTest < Minitest::Test
     assert_nil @array.digg(2, :something, :nested, 5)
     assert_nil @array.digg('h')
   end
+
+  def test_that_it_can_fetch_by_string_path
+    assert_equal 'hello', @hash.fetch_path('nested_array/0')
+    assert_equal 'nested world', @hash.fetch_path('nested/hello')
+    assert_equal 'nested string', @array.fetch_path('2/something/nested')
+  end
+
+  def test_that_it_can_fetch_by_string_path_and_customize
+    assert_equal 'hello', @hash.fetch_path('nested_array.0', delimeter: '.')
+    assert_equal 'nested world', @hash.fetch_path('nested@hello', delimeter: '@')
+    assert_equal 'zh-tw.no_value', @hash.fetch_path('nested/hello/none', default: 'zh-tw.no_value')
+  end
 end
