@@ -38,12 +38,19 @@ Basic Examples
 ```ruby
 hash = { hello: 'world', nested: { hello: 'world' }, nested_array: ['hello', 'world'] }
 
-hash.digg(:hello)                # => 'world'
-hash.digg('hello')               # => 'world'
-hash.digg('nested', 'hello')     # => 'world'
-hash.digg('nested_array', 0)     # => 'hello'
-hash.digg('nested_array', '0')   # => 'hello'
-hash.digg(:hello, 0, :not_found) # => nil
+# Fetch by digg
+hash.digg(:hello)                #=> 'world'
+hash.digg('hello')               #=> 'world'
+hash.digg('nested', 'hello')     #=> 'world'
+hash.digg('nested_array', 0)     #=> 'hello'
+hash.digg('nested_array', '0')   #=> 'hello'
+hash.digg(:hello, 0, :not_found) #=> nil
+
+# Fetch by path
+hash.fetch_path('nested/hello')                 #=> 'world'
+hash.fetch_path('nested_array/0')               #=> 'hello'
+hash.fetch_path('nested.hello', delimeter: '.') #=> 'hello'
+hash.fetch_path('nested/hello/none', default: 'zh-tw.not_found') # => 'zh-tw.not_found'
 
 # Since `nil` will be returned for not found value instead of TypeError if we are digging too far
 # we can use conditional block without breaking the application
