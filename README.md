@@ -1,5 +1,4 @@
 [![Gem Version](https://badge.fury.io/rb/better_dig.svg)](https://badge.fury.io/rb/better_dig)
-[![Downloads](https://img.shields.io/gem/dt/better_dig.svg)](https://rubygems.org/gems/better_dig)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6bc69601493caa67e52e/maintainability)](https://codeclimate.com/github/berniechiu/better_dig/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6bc69601493caa67e52e/test_coverage)](https://codeclimate.com/github/berniechiu/better_dig/test_coverage)
 [![Build Status](https://travis-ci.org/berniechiu/better_dig.svg?branch=master)](https://travis-ci.org/berniechiu/better_dig)
@@ -7,6 +6,8 @@
 # BetterDig
 
 Another kind of hash/array lookup you'll like
+
+Supports dig-like method for Ruby below `2,3`
 
 ## Table of Context
 
