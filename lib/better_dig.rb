@@ -13,7 +13,10 @@ module BetterDig
   end
 
   def fetch_path(path, default: nil, delimeter: '/')
-    digg(*path.split(delimeter)) || default
+    digg(*path.split(delimeter)).tap do |value|
+      return default if value.nil?
+      return value
+    end
   end
 
   private
@@ -27,7 +30,10 @@ module BetterDig
   end
 
   def find_indifferent_value_by(key)
-    self[key] || self[key.send(INDIFFERENT_FIND[key.class])]
+    self[key.freeze].tap do |value|
+      return value unless value.nil?
+      return self[key.send(INDIFFERENT_FIND[key.class])]
+    end
   end
 end
 
