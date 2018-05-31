@@ -3,6 +3,7 @@ require "test_helper"
 class BetterDigTest < Minitest::Test
   def setup
     @hash  = { hello: 'world', nested: { hello: 'nested world' }, nested_array: ['hello', 'world'] }
+    @boolean_hash = { is_hello: false, name: { cool: true, ugly: false } }
     @array = ['hello', 'world', { something: { nested: 'nested string' } }]
   end
 
@@ -43,5 +44,11 @@ class BetterDigTest < Minitest::Test
     assert_equal 'hello', @hash.fetch_path('nested_array.0', delimeter: '.')
     assert_equal 'nested world', @hash.fetch_path('nested@hello', delimeter: '@')
     assert_equal 'zh-tw.no_value', @hash.fetch_path('nested/hello/none', default: 'zh-tw.no_value')
+  end
+
+  def test_that_it_can_fetch_with_boolean
+    assert_equal false, @hash.fetch_path('is_hello')
+    assert_equal true, @hash.fetch_path('name/cool')
+    assert_equal false, @hash.fetch_path('name/ugly')
   end
 end
