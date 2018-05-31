@@ -49,6 +49,6 @@ class BetterDigTest < Minitest::Test
   def test_that_it_can_fetch_with_boolean
     assert_equal false, @boolean_hash.fetch_path('is_hello')
     assert_equal true, @boolean_hash.fetch_path('name/cool')
-    assert_equal false, @boolean_hash.fetch_path('name/ugly')
+    assert_equal false, @boolean_hash.fetch_path('name/ugly', default: true)
   end
 end

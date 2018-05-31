@@ -37,7 +37,7 @@ Or install it yourself as:
 Basic Examples
 
 ```ruby
-hash = { hello: 'world', nested: { hello: 'world' }, nested_array: ['hello', 'world'] }
+hash = { hello: 'world', nested: { hello: 'world' }, nested_array: ['hello', 'world'], is_cool: true }
 
 # Fetch by digg
 hash.digg(:hello)                #=> 'world'
@@ -51,7 +51,8 @@ hash.digg(:hello, 0, :not_found) #=> nil
 hash.fetch_path('nested/hello')                 #=> 'world'
 hash.fetch_path('nested_array/0')               #=> 'hello'
 hash.fetch_path('nested.hello', delimeter: '.') #=> 'hello'
-hash.fetch_path('nested/hello/none', default: 'zh-tw.not_found') # => 'zh-tw.not_found'
+hash.fetch_path('nested/hello/none', default: 'zh-tw.not_found') #=> 'zh-tw.not_found'
+hash.fetch_path('is_cool') #=> true
 
 # Since `nil` will be returned for not found value instead of TypeError if we are digging too far
 # we can use conditional block without breaking the application
