@@ -7,7 +7,7 @@
 
 Another kind of hash/array lookup you'll like
 
-Supports dig-like method for Ruby below `2,3`
+Supports dig-like method for Ruby below `2.3`
 
 ## Table of Context
 
